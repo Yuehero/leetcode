@@ -10,20 +10,16 @@
 
 namespace leetcode {
     class Dp {
-    private:
-        std::vector<int> _dp;
-        std::vector<std::vector<int>> _dp2D;
-
     public:
-        //70
+        //70.
         int climbStairs(int n);
-        //120
+        //120.
         int minimumTotal(std::vector<std::vector<int>> &triangle);
-        //64
+        //64.
         int minPathSum(std::vector<std::vector<int>> &grid);
-        //63
+        //63.
         int uniquePathsWithObstacles(std::vector<std::vector<int>> &obstacleGrid);
-        //91
+        //91.
         int numDecodings(std::string s);
 
 
