@@ -101,14 +101,46 @@ namespace leetcode {
          _n = board[0].size(); //默认正方形
          _masked_2d = std::vector<std::vector<bool>>(_m, std::vector<bool>(_n, false));
 
-         for (int i = 0; i < _m; i ++) {
-             for (int j = 0; j < _n; j ++) {
-                  if (_findExist(board, i, j, 0, word)) {
-                      return true;
-                  }
-             }
-         }
-         return false;
+        for (int i = 0; i < _m; i++) {
+            for (int j = 0; j < _n; j++) {
+                if (_findExist(board, i, j, 0, word)) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    void BackTrack::_floodfill(std::vector<std::vector<char>> &grid, int x, int y) {
+        _masked_2d[x][y] = true;
+        //四个方向遍历
+        for (int i = 0; i < 4; i++) {
+            int new_x = _dims[i][0] + x;
+            int new_y = _dims[i][1] + y;
+            if (_isArea(new_x, new_y) && _masked_2d[new_x][new_y] == false && grid[new_x][new_y] == '1') {
+                _floodfill(grid, new_x, new_y);
+            }
+        }
+        return;
+    }
+
+    //200, 岛屿是 1，水域是0，计算岛屿的数量
+    int BackTrack::numIslands(std::vector<std::vector<char>> &grid) {
+        int res = 0;
+        _m = grid.size();
+        assert(_m > 0);
+        _n = grid[0].size();
+        _masked_2d = std::vector<std::vector<bool>>(_m, std::vector<bool>(_n, false));
+
+        for (int i = 0; i < _m; i++) {
+            for (int j = 0; j < _n; j++) {
+                if (grid[i][j] == '1' && !_masked_2d[i][j]) {
+                    res++; //先占地，在染色
+                    _floodfill(grid, i, j);
+                }
+            }
+        }
+        return res;
     }
 
 

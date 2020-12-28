@@ -38,6 +38,10 @@ namespace leetcode {
                        int index, std::string word);
         bool exist(std::vector<std::vector<char>>& board, std::string word);
 
+        //200. floodfill, 岛屿数量
+        int numIslands(std::vector<std::vector<char>>& grid);
+        void _floodfill(std::vector<std::vector<char>> &grid, int x, int y);
+
 
 
 

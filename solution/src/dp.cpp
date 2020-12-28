@@ -3,9 +3,9 @@
 //
 
 #include "../inc/dp.h"
+#include <algorithm>
 
 namespace leetcode {
-
     //70.
     int Dp::climbStairs(int n) {
         //dp 自底向上
@@ -99,6 +99,20 @@ namespace leetcode {
             }
         }
         return memo[m - 1][n - 1];
+    }
+
+    //279.
+    int Dp::numSquares(int n) {
+        std::vector<int> dp(n + 1, n); //初始化一个最大的值
+        dp[1] = 1;
+        //求dp[i]
+        for (int i = 2; i <= n ; i ++) {
+             for (int j = 1; j <= sqrt(i); j ++) {
+                 //寻找最小的
+                 dp[i] = std::min(dp[i],  i - j *j == 0 ? 1: 1 + dp[i - j * j]);
+             }
+        }
+        return dp[n];
     }
 }
 
