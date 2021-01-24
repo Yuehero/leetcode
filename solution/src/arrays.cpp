@@ -41,7 +41,7 @@ namespace leetcode {
     }
 
     //返回索引p, 达到效果：nums[l, p - 1] <= nums[p]; nums[p + 1, r] >= nums[p]
-    int Arrays::_partition_II(std::vector<T>& nums, int l, int r) {
+    int Arrays::_partition_II(std::vector<int>& nums, int l, int r) {
 
         int v = nums[l]; //标准
         //定义j，使得 nums[l + 1, i) <= v,  num(j, r] >= v

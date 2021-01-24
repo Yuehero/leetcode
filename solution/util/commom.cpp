@@ -71,5 +71,20 @@ template void print1D<T>(std::vector<T> &nums);
         }
     }
 
+    void genNearlyOrderedArrary(std::vector<int> &nums, int n, int swapTimes) {
+        assert(n > 0);
+        nums.clear();
+        nums.resize(n);
+        for (int i = 0; i < n; i++) {
+            nums[i] = i;
+        }
+        srand(time(NULL));
+        for (int i = 0; i < swapTimes; i++) {
+            int posx = rand() % n;
+            int posy = rand() % n;
+            std::swap(nums[posx], nums[posy]);
+        }
+    }
+
 
 } //namesapce Util

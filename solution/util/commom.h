@@ -25,6 +25,8 @@ namespace Util {
 
     void genRandomArrary(std::vector<int> &nums, int n, int l, int r);
 
+    void genNearlyOrderedArrary(std::vector<int> &nums, int n, int swapTimes);
+
 } //namespce Util
 
 #endif //LEETCODE_COMMOM_H
